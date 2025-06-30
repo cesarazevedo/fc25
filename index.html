@@ -29,8 +29,8 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-			 position: relative;    /* 👈 NOVA LINHA */
-			z-index: 2;           /* 👈 NOVA LINHA */
+			 position: relative;
+			z-index: 2;
         }
 
         .demo-banner strong {
@@ -537,6 +537,146 @@
             font-size: 13px;
         }
 
+        /* ===== CSS PARA ARTILHARIA ===== */
+        .artilharia-container {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .artilheiro-item {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .artilheiro-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .artilheiro-posicao {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4a5568;
+            min-width: 40px;
+            text-align: center;
+            margin-right: 20px;
+        }
+
+        .artilheiro-posicao.first {
+            color: #ffd700;
+            font-size: 2rem;
+        }
+
+        .artilheiro-posicao.second {
+            color: #c0c0c0;
+            font-size: 1.8rem;
+        }
+
+        .artilheiro-posicao.third {
+            color: #cd7f32;
+            font-size: 1.7rem;
+        }
+
+        .artilheiro-foto {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+            border: 3px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .artilheiro-foto:hover {
+            border-color: #667eea;
+        }
+
+        .artilheiro-foto.placeholder {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .artilheiro-info {
+            flex: 1;
+        }
+
+        .artilheiro-nome {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2d3748;
+            margin-bottom: 5px;
+        }
+
+        .artilheiro-posicao-texto {
+            color: #718096;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .artilheiro-gols {
+            text-align: right;
+            min-width: 80px;
+        }
+
+        .artilheiro-numero-gols {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .artilheiro-label-gols {
+            color: #718096;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .foto-upload-area {
+            border: 2px dashed #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .foto-upload-area:hover {
+            border-color: #667eea;
+            background-color: #f7fafc;
+        }
+
+        .foto-upload-area.drag-over {
+            border-color: #667eea;
+            background-color: #e6fffa;
+        }
+
+        .preview-foto {
+            max-width: 150px;
+            max-height: 150px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
+        .foto-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 10px;
@@ -613,93 +753,31 @@
             .stat-ex-campeoes div:first-child {
                 font-size: 1.5rem !important;
             }
+
+            /* Responsividade para Artilharia */
+            .artilheiro-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .artilheiro-posicao {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+
+            .artilheiro-foto {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+
+            .artilheiro-gols {
+                text-align: center;
+            }
         }
-		css/* ===== BOLAS DE FUTEBOL ANIMADAS ===== */
-
-/* Container das bolas */
-.balls-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    pointer-events: none;
-}
-
-/* Bola de futebol */
-.soccer-ball {
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    background: #ffffff;
-    border-radius: 50%;
-    opacity: 0.1;
-    background-image: 
-        radial-gradient(circle at 30% 30%, #000 8px, transparent 8px),
-        radial-gradient(circle at 70% 30%, #000 8px, transparent 8px),
-        radial-gradient(circle at 50% 60%, #000 8px, transparent 8px),
-        radial-gradient(circle at 30% 70%, #000 8px, transparent 8px),
-        radial-gradient(circle at 70% 70%, #000 8px, transparent 8px);
-    background-size: 30px 30px;
-}
-
-/* Posições e animações das bolas */
-.ball1 { animation: moveRight1 15s linear infinite; top: 20%; left: -80px; }
-.ball2 { animation: moveRight2 20s linear infinite; top: 40%; left: -80px; animation-delay: -5s; }
-.ball3 { animation: moveRight3 18s linear infinite; top: 60%; left: -80px; animation-delay: -10s; }
-.ball4 { animation: moveLeft1 16s linear infinite; top: 30%; right: -80px; }
-.ball5 { animation: moveLeft2 22s linear infinite; top: 70%; right: -80px; animation-delay: -7s; }
-.ball6 { animation: diagonal1 25s linear infinite; top: -80px; left: 10%; }
-.ball7 { animation: diagonal2 20s linear infinite; top: -80px; right: 15%; animation-delay: -12s; }
-
-/* Keyframes para as animações */
-@keyframes moveRight1 {
-    0% { transform: translateX(0) rotate(0deg); }
-    100% { transform: translateX(calc(100vw + 160px)) rotate(360deg); }
-}
-
-@keyframes moveRight2 {
-    0% { transform: translateX(0) rotate(0deg); }
-    100% { transform: translateX(calc(100vw + 160px)) rotate(-360deg); }
-}
-
-@keyframes moveRight3 {
-    0% { transform: translateX(0) rotate(0deg); }
-    100% { transform: translateX(calc(100vw + 160px)) rotate(360deg); }
-}
-
-@keyframes moveLeft1 {
-    0% { transform: translateX(0) rotate(0deg); }
-    100% { transform: translateX(calc(-100vw - 160px)) rotate(-360deg); }
-}
-
-@keyframes moveLeft2 {
-    0% { transform: translateX(0) rotate(0deg); }
-    100% { transform: translateX(calc(-100vw - 160px)) rotate(360deg); }
-}
-
-@keyframes diagonal1 {
-    0% { transform: translate(0, 0) rotate(0deg); }
-    100% { transform: translate(80vw, calc(100vh + 160px)) rotate(720deg); }
-}
-
-@keyframes diagonal2 {
-    0% { transform: translate(0, 0) rotate(0deg); }
-    100% { transform: translate(-80vw, calc(100vh + 160px)) rotate(-720deg); }
-}
-
-/* Responsividade para celular */
-@media (max-width: 768px) {
-    .soccer-ball {
-        width: 40px;
-        height: 40px;
-    }
-}
     </style>
 </head>
 <body>
-<!-- Bolas de futebol animadas (ficam atrás de tudo) -->
 
     <div class="demo-banner">
         <span id="statusConexao" class="status-conexao status-conectando">⚡ Conectando...</span>
@@ -722,6 +800,7 @@
             <button class="tab" onclick="showTab('tabelaJogos')">📋 Tabela de Jogos</button>
             <button class="tab" onclick="showTab('consultarJogos')">🔍 Consultar Jogos</button>
             <button class="tab" onclick="showTab('cadastrarJogo')" id="tabCadastrarJogo" style="display: none;">⚽ Cadastrar Jogo</button>
+            <button class="tab" onclick="showTab('artilharia')">⚽ Artilharia</button>
             <button class="tab" onclick="showTab('estatisticas')">📈 Estatísticas</button>
             <button class="tab" onclick="showTab('exCampeoes')">🏆 Ex-Campeões</button>
             <button class="tab" onclick="showTab('regulamento')">📋 Regulamento</button>
@@ -868,6 +947,58 @@
                     <button class="btn" onclick="cadastrarJogo()" id="btnCadastrar">Cadastrar Jogo</button>
                     <button class="btn btn-danger hidden" onclick="cancelarEdicao()" id="btnCancelar">Cancelar Edição</button>
                 </div>
+            </div>
+        </div>
+
+        <!-- ABA ARTILHARIA -->
+        <div id="artilharia" class="tab-content hidden">
+            <div class="card">
+                <h2>⚽ Ranking de Artilheiros</h2>
+                
+                <div style="background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%); padding: 20px; border-radius: 15px; margin-bottom: 30px; text-align: center; box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);">
+                    <h3 style="color: #b8860b; margin-bottom: 10px; font-size: 1.3rem;">👑 Artilheiros do Campeonato</h3>
+                    <p style="color: #8b7355; margin: 0; font-weight: 500;">Os goleadores que fazem a diferença em campo</p>
+                </div>
+
+                <!-- Seção Admin para Upload de Fotos -->
+                <div id="uploadFotosSection" class="sample-data-section hidden">
+                    <h3>📸 Gerenciar Fotos dos Jogadores</h3>
+                    <p>Adicione ou atualize as fotos dos artilheiros</p>
+                    
+                    <div class="form-row" style="margin-bottom: 20px;">
+                        <div class="form-group">
+                            <label for="jogadorFoto">Selecionar Jogador:</label>
+                            <select id="jogadorFoto">
+                                <option value="">Escolha um jogador</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Foto Atual:</label>
+                            <div id="fotoAtualPreview" style="text-align: center; margin-top: 10px;">
+                                <div style="color: #718096;">Nenhuma foto</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="foto-upload-area" onclick="document.getElementById('inputFoto').click()">
+                        <div style="font-size: 3rem; color: #667eea; margin-bottom: 10px;">📸</div>
+                        <div style="font-weight: 600; color: #4a5568; margin-bottom: 5px;">Clique para selecionar uma foto</div>
+                        <div style="color: #718096; font-size: 14px;">ou arraste e solte aqui</div>
+                        <input type="file" id="inputFoto" accept="image/*" style="display: none;">
+                    </div>
+                    
+                    <div id="previewArea" class="hidden" style="text-align: center;">
+                        <img id="previewImage" class="preview-foto">
+                        <div class="foto-actions">
+                            <button class="btn" onclick="salvarFotoJogador()">💾 Salvar Foto</button>
+                            <button class="btn btn-danger" onclick="cancelarUpload()">❌ Cancelar</button>
+                            <button class="btn btn-danger" onclick="removerFotoJogador()">🗑️ Remover Foto</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="artilhariaContainer" class="artilharia-container"></div>
             </div>
         </div>
 
@@ -1407,6 +1538,275 @@
             return html;
         }
 
+        // ===== FUNÇÕES DA ARTILHARIA =====
+
+        function mostrarArtilharia() {
+            const container = document.getElementById('artilhariaContainer');
+            if (!container) return;
+
+            const artilheiros = obterRankingArtilheiros();
+            
+            if (artilheiros.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #718096; margin: 20px 0;">Nenhum gol marcado ainda no campeonato.</p>';
+                return;
+            }
+
+            let html = '';
+            
+            artilheiros.forEach((jogador, index) => {
+                if (jogador.golsPro === 0) return; // Não mostrar quem não fez gols
+                
+                let positionClass = '';
+                if (index === 0) positionClass = 'first';
+                else if (index === 1) positionClass = 'second';
+                else if (index === 2) positionClass = 'third';
+                
+                const fotoSrc = jogador.foto || '';
+                const primeiraLetra = jogador.nome.charAt(0).toUpperCase();
+                
+                html += `
+                    <div class="artilheiro-item">
+                        <div class="artilheiro-posicao ${positionClass}">${index + 1}</div>
+                        
+                        ${fotoSrc ? 
+                            `<img src="${fotoSrc}" alt="${jogador.nome}" class="artilheiro-foto">` :
+                            `<div class="artilheiro-foto placeholder">${primeiraLetra}</div>`
+                        }
+                        
+                        <div class="artilheiro-info">
+                            <div class="artilheiro-nome">${jogador.nome}</div>
+                            <div class="artilheiro-posicao-texto">ATACANTE</div>
+                        </div>
+                        
+                        <div class="artilheiro-gols">
+                            <div class="artilheiro-numero-gols">${jogador.golsPro}</div>
+                            <div class="artilheiro-label-gols">GOL${jogador.golsPro === 1 ? '' : 'S'}</div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        function obterRankingArtilheiros() {
+            const jogadoresArray = Object.values(jogadores);
+            
+            return jogadoresArray.sort((a, b) => {
+                if (b.golsPro !== a.golsPro) return b.golsPro - a.golsPro;
+                if (b.vitorias !== a.vitorias) return b.vitorias - a.vitorias;
+                return a.nome.localeCompare(b.nome);
+            });
+        }
+
+        function atualizarSelectJogadorFoto() {
+            const select = document.getElementById('jogadorFoto');
+            if (!select) return;
+            
+            const nomesOrdenados = Object.keys(jogadores).sort();
+            
+            select.innerHTML = '<option value="">Escolha um jogador</option>';
+            nomesOrdenados.forEach(nome => {
+                select.innerHTML += `<option value="${nome}">${nome}</option>`;
+            });
+            
+            select.onchange = function() {
+                const nome = this.value;
+                if (nome && jogadores[nome]) {
+                    mostrarFotoAtual(nome);
+                } else {
+                    limparPreviewFoto();
+                }
+            };
+        }
+
+        function mostrarFotoAtual(nomeJogador) {
+            const container = document.getElementById('fotoAtualPreview');
+            if (!container) return;
+            
+            const jogador = jogadores[nomeJogador];
+            if (!jogador) return;
+            
+            if (jogador.foto) {
+                container.innerHTML = `
+                    <img src="${jogador.foto}" alt="${nomeJogador}" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid #667eea;">
+                `;
+            } else {
+                container.innerHTML = '<div style="color: #718096;">Nenhuma foto</div>';
+            }
+        }
+
+        function limparPreviewFoto() {
+            const fotoAtual = document.getElementById('fotoAtualPreview');
+            const previewArea = document.getElementById('previewArea');
+            const inputFoto = document.getElementById('inputFoto');
+            
+            if (fotoAtual) {
+                fotoAtual.innerHTML = '<div style="color: #718096;">Nenhuma foto</div>';
+            }
+            
+            if (previewArea) {
+                previewArea.classList.add('hidden');
+            }
+            
+            if (inputFoto) {
+                inputFoto.value = '';
+            }
+        }
+
+        async function salvarFotoJogador() {
+            if (!modoAdmin) return;
+            
+            const nomeJogador = document.getElementById('jogadorFoto').value;
+            const previewImage = document.getElementById('previewImage');
+            
+            if (!nomeJogador) {
+                mostrarAlerta('Selecione um jogador primeiro!', 'error');
+                return;
+            }
+            
+            if (!previewImage.src) {
+                mostrarAlerta('Nenhuma foto selecionada!', 'error');
+                return;
+            }
+            
+            try {
+                // Atualizar dados do jogador
+                jogadores[nomeJogador].foto = previewImage.src;
+                
+                // Salvar no Firebase se online
+                if (statusConexao === 'online' && jogadores[nomeJogador].id) {
+                    const { doc, updateDoc } = window.firebaseUtils;
+                    await updateDoc(doc(window.firebaseDB, "jogadores", jogadores[nomeJogador].id), {
+                        foto: previewImage.src
+                    });
+                }
+                
+                salvarDadosLocal();
+                mostrarFotoAtual(nomeJogador);
+                cancelarUpload();
+                mostrarArtilharia(); // Atualizar ranking
+                
+                mostrarAlerta(`📸 Foto de ${nomeJogador} salva com sucesso!`);
+                
+            } catch (error) {
+                console.error('Erro ao salvar foto:', error);
+                mostrarAlerta('❌ Erro ao salvar foto', 'error');
+            }
+        }
+
+        async function removerFotoJogador() {
+            if (!modoAdmin) return;
+            
+            const nomeJogador = document.getElementById('jogadorFoto').value;
+            
+            if (!nomeJogador) {
+                mostrarAlerta('Selecione um jogador primeiro!', 'error');
+                return;
+            }
+            
+            if (!jogadores[nomeJogador].foto) {
+                mostrarAlerta('Este jogador não possui foto!', 'error');
+                return;
+            }
+            
+            if (confirm(`Tem certeza que deseja remover a foto de ${nomeJogador}?`)) {
+                try {
+                    // Remover foto dos dados
+                    delete jogadores[nomeJogador].foto;
+                    
+                    // Atualizar no Firebase se online
+                    if (statusConexao === 'online' && jogadores[nomeJogador].id) {
+                        const { doc, updateDoc } = window.firebaseUtils;
+                        await updateDoc(doc(window.firebaseDB, "jogadores", jogadores[nomeJogador].id), {
+                            foto: null
+                        });
+                    }
+                    
+                    salvarDadosLocal();
+                    mostrarFotoAtual(nomeJogador);
+                    cancelarUpload();
+                    mostrarArtilharia(); // Atualizar ranking
+                    
+                    mostrarAlerta(`🗑️ Foto de ${nomeJogador} removida!`);
+                    
+                } catch (error) {
+                    console.error('Erro ao remover foto:', error);
+                    mostrarAlerta('❌ Erro ao remover foto', 'error');
+                }
+            }
+        }
+
+        function cancelarUpload() {
+            const previewArea = document.getElementById('previewArea');
+            const inputFoto = document.getElementById('inputFoto');
+            
+            if (previewArea) {
+                previewArea.classList.add('hidden');
+            }
+            
+            if (inputFoto) {
+                inputFoto.value = '';
+            }
+        }
+
+        // Event listeners para upload de foto
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputFoto = document.getElementById('inputFoto');
+            const uploadArea = document.querySelector('.foto-upload-area');
+            const previewArea = document.getElementById('previewArea');
+            const previewImage = document.getElementById('previewImage');
+            
+            if (inputFoto) {
+                inputFoto.addEventListener('change', function(e) {
+                    const file = e.target.files[0];
+                    if (file) {
+                        processarArquivoImagem(file);
+                    }
+                });
+            }
+            
+            if (uploadArea) {
+                // Drag and drop
+                uploadArea.addEventListener('dragover', function(e) {
+                    e.preventDefault();
+                    uploadArea.classList.add('drag-over');
+                });
+                
+                uploadArea.addEventListener('dragleave', function(e) {
+                    e.preventDefault();
+                    uploadArea.classList.remove('drag-over');
+                });
+                
+                uploadArea.addEventListener('drop', function(e) {
+                    e.preventDefault();
+                    uploadArea.classList.remove('drag-over');
+                    
+                    const files = e.dataTransfer.files;
+                    if (files.length > 0 && files[0].type.startsWith('image/')) {
+                        processarArquivoImagem(files[0]);
+                    }
+                });
+            }
+            
+            function processarArquivoImagem(file) {
+                // Verificar tamanho (máximo 5MB)
+                if (file.size > 5 * 1024 * 1024) {
+                    mostrarAlerta('Arquivo muito grande! Máximo 5MB.', 'error');
+                    return;
+                }
+                
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    if (previewImage && previewArea) {
+                        previewImage.src = e.target.result;
+                        previewArea.classList.remove('hidden');
+                    }
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
         // FUNÇÕES DO FIREBASE
         function atualizarStatusConexao(status) {
             statusConexao = status;
@@ -1672,6 +2072,7 @@
             const tabJogadores = document.getElementById('tabJogadores');
             const tabCadastrarJogo = document.getElementById('tabCadastrarJogo');
             const controlesModo = document.getElementById('controlesModo');
+            const uploadFotosSection = document.getElementById('uploadFotosSection');
             
             if (controlesModo) {
                 if (modoAdmin) {
@@ -1690,6 +2091,14 @@
             
             if (tabCadastrarJogo) {
                 tabCadastrarJogo.style.display = modoAdmin ? 'block' : 'none';
+            }
+            
+            if (uploadFotosSection) {
+                if (modoAdmin) {
+                    uploadFotosSection.classList.remove('hidden');
+                } else {
+                    uploadFotosSection.classList.add('hidden');
+                }
             }
             
             const elementosAdmin = [
@@ -1784,6 +2193,9 @@
                 mostrarTabelaJogos();
             } else if (tabName === 'estatisticas') {
                 mostrarEstatisticas();
+            } else if (tabName === 'artilharia') {
+                mostrarArtilharia();
+                atualizarSelectJogadorFoto();
             } else if (tabName === 'exCampeoes') {
                 // Aba de ex-campeões não precisa de atualização dinâmica
             } else if (tabName === 'consultarJogos') {
@@ -2727,9 +3139,12 @@
             listarJogadores();
             atualizarSelectsJogadores();
             atualizarFiltroJogadores();
+            atualizarSelectJogadorFoto();
             listarTodosJogos();
             mostrarTabela();
+            mostrarTabelaJogos();
             mostrarEstatisticas();
+            mostrarArtilharia();
         }
 
         // INICIALIZAÇÃO
@@ -2812,3 +3227,4 @@
     </script>
 </body>
 </html>
+                
